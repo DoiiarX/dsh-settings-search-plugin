@@ -1,0 +1,3 @@
+- insert:
+    - id: settings-search
+      name: '@doiiarx/dsh-settings-search-plugin'
