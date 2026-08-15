@@ -48,3 +48,27 @@ No invalidation. The plugin runs entirely in the browser and changes no model re
 - **Item-level search for never-visited, non-registering sections** — the ledger supplies tab-level rows for every section, but item-level candidates come from the registration surface or the rendered DOM. A section the user has never opened and whose plugin never registers exposes only its tab name; full item coverage for such sections would require reading each plugin's locale dictionaries or a `searchItems` channel in `slots.register`, both deferred.
 - **Candidate text is normalized, not stemmed** — matching is case- and whitespace-normalized substring inclusion; pinyin and fuzzy recall are not implemented.
 - **Overlay is a page-local absolute-positioned layer** — it tracks the settings panel's header and nav widths at install time; a theme that changes those dimensions after the dialog mounts needs a panel re-open to re-measure.
+
+## Installation
+
+Copy the block below to your DSH agent and it will finish the install:
+
+```text
+Install the settings-search plugin (@doiiarx/dsh-settings-search-plugin):
+
+1. Clone the repo:
+   git clone https://github.com/DoiiarX/dsh-settings-search-plugin
+   cd dsh-settings-search-plugin
+2. Install dependencies: pnpm install
+   (the built lib/ output is already committed; peer deps @deepseek-ai/cordis
+   and @deepseek-ai/dsh-client-ui-slots come from the harness runtime.)
+3. Mount into the web profile: edit $HOME/.dsh/profiles/web/package.json,
+   add "@doiiarx/dsh-settings-search-plugin": "link:<absolute-path-to-this-dir>"
+   under dependencies, and "@doiiarx/dsh-settings-search-plugin" under
+   dsh.profile.bundles.
+4. Run pnpm install in the profile directory.
+5. Restart the web process and verify the Settings panel shows a search field.
+```
+
+This plugin is browser-only (no settings namespace, no model tools), so it
+needs no WEB_SETTINGS_NAMESPACES entry and no host rebuild.

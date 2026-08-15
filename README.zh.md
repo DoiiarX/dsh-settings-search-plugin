@@ -48,3 +48,26 @@ None, as a presentation-only plugin：搜索候选与导航是浏览器 UI，绝
 - **从未访问且未注册的分区的条目级搜索** —— 账本为每个分区提供分区级行，但条目级候选来自注册面或渲染 DOM。用户从未打开过、且其插件从未注册的分区只暴露分区名；此类分区的完整条目覆盖需要读取各插件的 locale 字典，或在 `slots.register` 中提供 `searchItems` 通道，两者均待办。
 - **候选文本做归一化而非词干化** —— 匹配是大小写与空白归一化后的子串包含；未实现拼音与模糊召回。
 - **浮层是页面本地的绝对定位层** —— 安装时跟踪设置面板的头部与 nav 宽度；主题在对话框挂载后改变这些尺寸时，需要重新打开面板重新测量。
+
+## 安装
+
+复制下面的指令块给你的 DSH agent，它会自动完成安装：
+
+```text
+请安装 settings-search 插件（@doiiarx/dsh-settings-search-plugin）：
+
+1. 克隆仓库：
+   git clone https://github.com/DoiiarX/dsh-settings-search-plugin
+   cd dsh-settings-search-plugin
+2. 安装依赖：pnpm install
+   （构建产物 lib/ 已提交；peer 依赖 @deepseek-ai/cordis 与
+   @deepseek-ai/dsh-client-ui-slots 由 harness 运行时提供。）
+3. 挂进 web profile：编辑 $HOME/.dsh/profiles/web/package.json，
+   在 dependencies 加 "@doiiarx/dsh-settings-search-plugin": "link:<本插件目录绝对路径>"，
+   在 dsh.profile.bundles 加 "@doiiarx/dsh-settings-search-plugin"。
+4. 在 profile 目录执行 pnpm install。
+5. 重启 web 进程，验证设置面板出现搜索框。
+```
+
+本插件纯浏览器端（无 settings 命名空间、无模型工具），不需要改
+WEB_SETTINGS_NAMESPACES 白名单，也不需要重 build host。
