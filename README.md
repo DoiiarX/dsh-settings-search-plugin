@@ -1,5 +1,7 @@
 # dsh-settings-search-plugin
 
+English | [中文](README.zh.md)
+
 A browser-only plugin that adds a search field to the DSH Web Settings panel. Typing shows an independent candidate list over the content column; clicking a candidate navigates to the owning section and, for item-level rows, focuses and highlights the setting. Registration is optional — sections are indexed from the slot ledger and from their rendered DOM, so third-party settings pages are searchable without any plugin changes.
 
 ## How the index is built

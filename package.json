@@ -22,5 +22,5 @@
     "type": "git",
     "url": "https://github.com/DoiiarX/dsh-settings-search-plugin.git"
   },
-  "files": ["lib", "src", "cordis.patch.yml", "README.md"]
+  "files": ["lib", "src", "cordis.patch.yml", "README.md", "README.zh.md"]
 }
